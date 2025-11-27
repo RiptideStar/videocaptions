@@ -16,8 +16,20 @@ styled captions back into the video using `ffmpeg`.
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-export OPENAI_API_KEY="sk-..."
 ```
+
+Create a `.env` file in the project root with your OpenAI API key:
+
+```bash
+echo "OPENAI_API_KEY=sk-..." > .env
+```
+
+Or manually create `.env` and add:
+```
+OPENAI_API_KEY=sk-your-api-key-here
+```
+
+The script will automatically load the API key from the `.env` file when you run it.
 
 ## Usage
 
@@ -41,7 +53,7 @@ Default behavior:
 ## Troubleshooting
 
 - Ensure `ffmpeg` is installed (`brew install ffmpeg` on macOS).
-- Confirm `OPENAI_API_KEY` is exported in the shell running the script.
+- Confirm `OPENAI_API_KEY` is set in your `.env` file in the project root.
 - The script prints progress for each major step; if it stalls, re-run with
   `FFMPEG`'s own verbose logs to inspect codec issues.
 

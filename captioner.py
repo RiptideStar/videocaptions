@@ -8,6 +8,7 @@ import tempfile
 from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
+from dotenv import load_dotenv
 from openai import OpenAI
 
 
@@ -231,6 +232,9 @@ def process_video(video_path: Path, srt_path: Path, output_path: Path, api_key: 
 
 
 def main() -> None:
+    # Load environment variables from .env file
+    load_dotenv()
+    
     args = parse_args()
     video_path = Path(args.video).expanduser().resolve()
     if not video_path.exists():
